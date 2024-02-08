@@ -2,6 +2,7 @@ mod api;
 
 use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
 use api::routes::config;
+use dotenv::dotenv;
 
 #[get("/")]
 async fn hello() -> impl Responder {
@@ -19,6 +20,7 @@ async fn manual_hello() -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    dotenv().ok();
     HttpServer::new(|| {
         App::new()
             .service(hello)

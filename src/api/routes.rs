@@ -19,13 +19,17 @@ pub fn config(cfg: &mut web::ServiceConfig) {
                     .service(web::resource("/rag").route(web::post().to(rag::rag))),
             )
             .service(
-                web::scope("/custom_llm")
-                    .service(web::resource("/basic").route(web::post().to(basic::basic)))
+                web::scope("/custom-llm")
                     .service(
-                        web::resource("/openai_sse").route(web::post().to(openai_sse::openai_sse)),
+                        web::resource("/basic/chat/completions")
+                            .route(web::post().to(basic::basic)),
                     )
                     .service(
-                        web::resource("/openai_advanced")
+                        web::resource("/openai-sse/chat/completions")
+                            .route(web::post().to(openai_sse::openai_sse)),
+                    )
+                    .service(
+                        web::resource("/openai-advanced/chat/completions")
                             .route(web::post().to(openai_advanced::openai_advanced)),
                     ),
             )
