@@ -1,8 +1,8 @@
 use crate::api::custom_llm::basic;
 use crate::api::custom_llm::openai_advanced;
 use crate::api::custom_llm::openai_sse;
-use crate::api::functions::basic as basic_functions;
-use crate::api::functions::rag;
+use crate::api::function_call::basic as basic_functions;
+use crate::api::function_call::rag;
 use crate::api::inbound;
 use crate::api::outbound;
 use crate::api::webhook;
@@ -33,9 +33,6 @@ pub fn config(cfg: &mut web::ServiceConfig) {
                             .route(web::post().to(openai_advanced::openai_advanced)),
                     ),
             )
-            .service(
-                web::scope("/webhook")
-                    .service(web::resource("/").route(web::post().to(webhook::index::webhook))),
-            ),
+            .service(web::resource("/webhook").route(web::post().to(webhook::index::webhook))),
     );
 }

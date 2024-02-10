@@ -1,5 +1,5 @@
 pub mod custom_llm;
-pub mod functions;
+pub mod function_call;
 pub mod inbound;
 pub mod outbound;
 pub mod routes;

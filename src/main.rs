@@ -1,4 +1,6 @@
 mod api;
+pub mod functions;
+pub mod types;
 
 use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
 use api::routes::config;
