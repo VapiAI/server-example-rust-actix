@@ -75,7 +75,7 @@ async fn handle_function_call(message: &VapiPayload) -> VapiResponse {
                 })
             }
             _ => VapiResponse::FunctionCallMessageResponse(FunctionCallMessageResponse {
-                result: Some("Invalid function name".to_string()),
+                result: Some("".to_string()),
                 forwardToClientEnabled: Some(false),
             }),
         }

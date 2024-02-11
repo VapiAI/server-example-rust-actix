@@ -19,7 +19,7 @@ pub struct Function {
     pub name: String,
     pub is_async: Option<bool>,
     pub description: Option<String>,
-    pub parameters: Option<HashMap<String, String>>,
+    pub parameters: Option<Value>,
 }
 
 pub type PlayHTEmotion = String;
@@ -40,7 +40,7 @@ pub struct Voice {
     pub text_guidance: Option<i32>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Default)]
 pub struct Assistant {
     pub name: Option<String>,
     pub transcriber: Option<Transcriber>,
